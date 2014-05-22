@@ -1,7 +1,18 @@
 #!/bin/bash
 
+# install gcc
+ 
+echo "Downloading Vim"
+cd /tmp/ && wget ftp://ftp.vim.org/pub/vim/unix/vim-7.4.tar.bz2 && tar -xvf vim-7.4.tar.bz2
+cd /tmp/vim74
+echo "Configuring VIM"
+./configure --prefix=/usr --with-features=huge --enable-rubyinterp --enable-pythoninterp
+sudo make && sudo make install
+echo "Removing vim folder and tar ball"
+rm -rf /tmp/vim74 && rm vim-7.4.tar.bz2
 VIM_DIRECTORY=$HOME/.vim
 PATHOGEN=$VIM_DIRECTORY/autoload/pathogen.vim
+
 
 
 if [ ! -d "$VIM_DIRECTORY" ]; then
@@ -26,7 +37,7 @@ git submodule add git@github.com:fholgado/minibufexpl.vim.git bundle/minibufexpl
 git submodule add https://github.com/wincent/Command-T.git bundle/command-t
 git submodule add https://github.com/mitechie/pyflakes-pathogen.git
 git submodule add https://github.com/mileszs/ack.vim.git bundle/ack
-git submodule add https://github.com/sjl/gundo.vim.git bundle/gundo
+git submodule add git@github.com:sjl/gundo.vim.git bundle/gundo
 git submodule add https://github.com/fs111/pydoc.vim.git bundle/pydoc
 git submodule add https://github.com/vim-scripts/pep8.git bundle/pep8
 git submodule add https://github.com/alfredodeza/pytest.vim.git bundle/py.test
@@ -35,6 +46,7 @@ git submodule add https://github.com/vim-scripts/TaskList.vim.git bundle/tasklis
 git submodule add https://github.com/vim-scripts/The-NERD-tree.git bundle/nerdtree
 git submodule add git@github.com:klen/rope-vim.git bundle/ropevim
 git submodule add git@github.com:klen/python-mode.git bundle/python-mode
+git submodule add git@github.com:MarcWeber/vim-addon-mw-utils.git
 
 git submodule init
 git submodule updat
