@@ -55,3 +55,9 @@
 [submodule "vim-addon-mw-utils"]
 	path = vim-addon-mw-utils
 	url = git@github.com:MarcWeber/vim-addon-mw-utils.git
+[submodule "bundle/vim-addons-mw-utils"]
+	path = bundle/vim-addons-mw-utils
+	url = git@github.com:MarcWeber/vim-addon-mw-utils.git
+[submodule "bundle/tlib"]
+	path = bundle/tlib
+	url = git@github.com:tomtom/tlib_vim.git

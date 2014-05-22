@@ -1,19 +1,28 @@
 #!/bin/bash
 
-# install gcc
- 
-echo "Downloading Vim"
-cd /tmp/ && wget ftp://ftp.vim.org/pub/vim/unix/vim-7.4.tar.bz2 && tar -xvf vim-7.4.tar.bz2
-cd /tmp/vim74
-echo "Configuring VIM"
-./configure --prefix=/usr --with-features=huge --enable-rubyinterp --enable-pythoninterp
-sudo make && sudo make install
-echo "Removing vim folder and tar ball"
-rm -rf /tmp/vim74 && rm vim-7.4.tar.bz2
 VIM_DIRECTORY=$HOME/.vim
 PATHOGEN=$VIM_DIRECTORY/autoload/pathogen.vim
 
+# Installing Dependencies
+sudo yum groupinstall 'Development Tools'
+sudo yum install ruby
+sudo yum install perl-devel python-devel ruby-devel
+sudo yum install perl-ExtUtils-Embed ncurses ncurses-devel
+ 
+echo "Downloading Vim"
 
+cd /tmp/ && wget ftp://ftp.vim.org/pub/vim/unix/vim-7.4.tar.bz2 && tar -xvf vim-7.4.tar.bz2
+cd /tmp/vim74
+
+echo "Configuring VIM"
+
+./configure --prefix=/usr --with-features=huge --enable-perlinterp --enable-rubyinterp --enable-pythoninterp
+
+sudo make && sudo make install
+
+echo "Removing vim folder and tar ball"
+
+sudo rm -rf /tmp/vim74 && sudo rm vim-7.4.tar.bz2
 
 if [ ! -d "$VIM_DIRECTORY" ]; then
     # Control will enter here if $DIRECTORY doesn't exist.
@@ -42,17 +51,23 @@ git submodule add https://github.com/fs111/pydoc.vim.git bundle/pydoc
 git submodule add https://github.com/vim-scripts/pep8.git bundle/pep8
 git submodule add https://github.com/alfredodeza/pytest.vim.git bundle/py.test
 git submodule add https://github.com/reinh/vim-makegreen bundle/makegreen
-git submodule add https://github.com/vim-scripts/TaskList.vim.git bundle/tasklist
 git submodule add https://github.com/vim-scripts/The-NERD-tree.git bundle/nerdtree
 git submodule add git@github.com:klen/rope-vim.git bundle/ropevim
 git submodule add git@github.com:klen/python-mode.git bundle/python-mode
-git submodule add git@github.com:MarcWeber/vim-addon-mw-utils.git
+# SnipMate Dependencies
+git submodule add git@github.com:MarcWeber/vim-addon-mw-utils.git bundle/vim-addons-mw-utils
+git submodule add git@github.com:tomtom/tlib_vim.git bundle/tlib
 
 git submodule init
 git submodule updat
 git submodule foreach git submodule init
 git submodule foreach git submodule update
 
+echo "Build C Extension for command-t"
+
+cd $VIM_DIRECTORY/bundle/command-t/ruby/command-t
+ruby extconf.rb
+sudo make
 
 if [ -f "$HOME/.vimrc" ]; then
   echo "Backing up your .vimrc"
