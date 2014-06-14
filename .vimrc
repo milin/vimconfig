@@ -23,9 +23,13 @@ syntax on
 
 set backspace=indent,eol,start
 
-let g:pymode = 1
+"Python Mode Settings
 let g:pyflakes_use_quickfix = 0
 let g:pep8_map='<leader>8'
+let g:pymode = 1
+let g:pymode_doc = 0
+let g:pymode_lint_cwindow = 0
+
 
 " Enable this for just NerdTree
 " NerdTreeTabsToggle kind takes care of this
@@ -103,6 +107,14 @@ endif " has("autocmd")
 command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
 	 	\ | wincmd p | diffthis
 
+
+" if you prefer the Omni-Completion tip window to close when a selection is
+" made, these lines close it on movement in insert mode or when leaving
+" insert mode
+autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
+
 " Formatting code
 set ts=4  " Tabs are 2 spaces
 set bs=2  " Backspace over everything in insert mode
@@ -145,6 +157,6 @@ map <f4> :w\|!clear;gcc %<cr>
 
 " ADD F6 hot key to save file opened using VIM that required root permissions
 map <f6> :w !sudo tee %
-
+map <f7> :%s/\s\+$//
 map bg :bn <CR>
 map vf :bp <CR>
