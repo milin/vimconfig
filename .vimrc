@@ -29,6 +29,7 @@ let g:pep8_map='<leader>8'
 let g:pymode = 1
 let g:pymode_doc = 0
 let g:pymode_lint_cwindow = 0
+let g:miniBufExplForceSyntaxEnable = 0
 
 
 " Enable this for just NerdTree
@@ -38,6 +39,14 @@ map <leader>n :NERDTreeToggle<CR>
 map <leader>j :RopeGotoDefinition<CR>
 map <leader>r :RopeRename<CR>
 map <leader>g :GundoToggle<CR>
+nmap <leader>a <Esc>:Ack!
+nmap <silent><Leader>tf <Esc>:Pytest file<CR>
+nmap <silent><Leader>tc <Esc>:Pytest class<CR>
+nmap <silent><Leader>tm <Esc>:Pytest method<CR>
+" cycle through test errors
+nmap <silent><Leader>tn <Esc>:Pytest next<CR>
+nmap <silent><Leader>tp <Esc>:Pytest previous<CR>
+nmap <silent><Leader>te <Esc>:Pytest error<CR>
 " Enable this you want nerdtree for every tab
 " Might replace it with NerdTreeTabs soon
 " autocmd VimEnter * NERDTree
@@ -77,6 +86,7 @@ if has("autocmd")
   " Use the default filetype settings, so that mail gets 'tw' set to 72,
   " 'cindent' is on in C files, etc.
   " Also load indent files, to automatically do language-dependent indenting.
+  filetype on
   filetype plugin indent on
 
   " Put these in an autocmd group, so that we can delete them easily.
