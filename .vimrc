@@ -40,6 +40,8 @@ map <leader>j :RopeGotoDefinition<CR>
 map <leader>r :RopeRename<CR>
 map <leader>g :GundoToggle<CR>
 nmap <leader>a <Esc>:Ack!
+
+" Pytest
 nmap <silent><Leader>tf <Esc>:Pytest file<CR>
 nmap <silent><Leader>tc <Esc>:Pytest class<CR>
 nmap <silent><Leader>tm <Esc>:Pytest method<CR>
@@ -168,5 +170,7 @@ map <f4> :w\|!clear;gcc %<cr>
 " ADD F6 hot key to save file opened using VIM that required root permissions
 map <f6> :w !sudo tee %
 map <f7> :%s/\s\+$//
+
+" Navigate through vim buffers
 map bg :bn <CR>
 map vf :bp <CR>
