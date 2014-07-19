@@ -174,3 +174,8 @@ map <f7> :%s/\s\+$//
 " Navigate through vim buffers
 map bg :bn <CR>
 map vf :bp <CR>
+" For easier vim split navigations
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
