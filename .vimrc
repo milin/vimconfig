@@ -12,6 +12,7 @@ set nocompatible
 " properly set to work with the Vim-related packages available in Debian.
 runtime! debian.vim
 
+
 " allow backspacing over everything in insert mode
 filetype off
 execute pathogen#infect()
@@ -20,7 +21,7 @@ call pathogen#helptags()
 
 filetype plugin indent on
 syntax on
-
+" Vim Solorized
 set backspace=indent,eol,start
 
 "Python Mode Settings
@@ -38,6 +39,7 @@ map <leader>n :NERDTreeToggle<CR>
 " map <Leader>n <plug>NERDTreeTabsToggle<CR>
 map <leader>j :RopeGotoDefinition<CR>
 map <leader>r :RopeRename<CR>
+let g:pymode_run = 0
 map <leader>g :GundoToggle<CR>
 nmap <leader>a <Esc>:Ack!
 
