@@ -11,8 +11,10 @@ set nocompatible
 " This line should not be removed as it ensures that various options are
 " properly set to work with the Vim-related packages available in Debian.
 runtime! debian.vim
-
-
+" CtrlP
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
 " allow backspacing over everything in insert mode
 filetype off
 execute pathogen#infect()
@@ -42,6 +44,11 @@ map <leader>r :RopeRename<CR>
 let g:pymode_run = 0
 map <leader>g :GundoToggle<CR>
 nmap <leader>a <Esc>:Ack!
+" Tagbar
+
+nnoremap <silent> <TAB> :TagbarToggle<CR>
+let g:tagbar_autoclose = 1
+let g:tagbar_autofocus = 1
 
 " Pytest
 nmap <silent><Leader>tf <Esc>:Pytest file<CR>
