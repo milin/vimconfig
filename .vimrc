@@ -10,12 +10,21 @@ set nocompatible
 
 " This line should not be removed as it ensures that various options are
 " properly set to work with the Vim-related packages available in Debian.
+
+
+set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
+let g:Powerline_symbols = 'fancy'
+set encoding=utf-8
+
 runtime! debian.vim
 " CtrlP
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 " allow backspacing over everything in insert mode
+let mapleader = "\<Space>"
+nnoremap <Leader>w :w<CR>
+nnoremap <Leader>v :Gblame<CR>
 filetype off
 execute pathogen#infect()
 
@@ -23,7 +32,9 @@ call pathogen#helptags()
 
 filetype plugin indent on
 syntax on
-" Vim Solorized
+
+colorscheme delek
+
 set backspace=indent,eol,start
 
 "Python Mode Settings
@@ -32,7 +43,12 @@ let g:pep8_map='<leader>8'
 let g:pymode = 1
 let g:pymode_doc = 0
 let g:pymode_lint_cwindow = 0
-let g:miniBufExplForceSyntaxEnable = 0
+let g:miniBufExplForceSyntaxEnable = 1
+set hidden
+
+
+" isort
+let g:vim_isort_map = '<C-i>'
 
 
 " Enable this for just NerdTree
@@ -47,6 +63,8 @@ nmap <leader>a <Esc>:Ack!
 " Tagbar
 
 nnoremap <silent> <TAB> :TagbarToggle<CR>
+nnoremap <silent> <> :TagbarToggle<CR>
+
 let g:tagbar_autoclose = 1
 let g:tagbar_autofocus = 1
 
@@ -164,9 +182,6 @@ imap <Tab> <C-P>
 set foldmethod=indent
 set foldlevel=99
 
-" Set color theme
-:colorscheme delek
-
 " Add F2 hot key for running Ruby programs
 map <f2> :w\|!clear;ruby %<cr>
 
@@ -183,8 +198,34 @@ map <f7> :%s/\s\+$//
 " Navigate through vim buffers
 map bg :bn <CR>
 map vf :bp <CR>
+map bb :Gblame <CR>
+map bk :bp\|bd # <CR> 
 " For easier vim split navigations
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+
+" Enable syntax highlighting when buffers were loaded through :bufdo, which
+" disables the Syntax autocmd event to speed up processing.
+augroup EnableSyntaxHighlighting
+    " Filetype processing does happen, so we can detect a buffer initially
+    " loaded during :bufdo through a set filetype, but missing b:current_syntax.
+    " Also don't do this when the user explicitly turned off syntax highlighting
+    " via :syntax off.
+    " Note: Must allow nesting of autocmds so that the :syntax enable triggers
+    " the ColorScheme event. Otherwise, some highlighting groups may not be
+    " restored properly.
+    autocmd! BufWinEnter * nested if exists('syntax_on') && ! exists('b:current_syntax') && ! empty(&l:filetype) | syntax enable | endif
+
+    " The above does not handle reloading via :bufdo edit!, because the
+    " b:current_syntax variable is not cleared by that. During the :bufdo,
+    " 'eventignore' contains "Syntax", so this can be used to detect this
+    " situation when the file is re-read into the buffer. Due to the
+    " 'eventignore', an immediate :syntax enable is ignored, but by clearing
+    " b:current_syntax, the above handler will do this when the reloaded buffer
+    " is displayed in a window again.
+    autocmd! BufRead * if exists('syntax_on') && exists('b:current_syntax') && ! empty(&l:filetype) && index(split(&eventignore, ','), 'Syntax') != -1 | unlet! b:current_syntax | endif
+augroup END
+

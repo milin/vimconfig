@@ -82,3 +82,12 @@
 [submodule "ctrlp.vim"]
 	path = ctrlp.vim
 	url = https://github.com/kien/ctrlp.vim.git
+[submodule "bundle/vim-isort"]
+	path = bundle/vim-isort
+	url = git@github.com:fisadev/vim-isort.git
+[submodule "bundle/colorschemes"]
+	path = bundle/colorschemes
+	url = git@github.com:flazz/vim-colorschemes.git
+[submodule "bundle/lusty"]
+	path = bundle/lusty
+	url = git@github.com:sjbach/lusty.git
