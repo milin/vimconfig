@@ -199,6 +199,8 @@ map <f7> :%s/\s\+$//
 map bg :bn <CR>
 map vf :bp <CR>
 map bb :Gblame <CR>
+" Delete current buffer without 
+" interferring with panes
 map bk :bp\|bd # <CR> 
 " For easier vim split navigations
 nnoremap <C-J> <C-W><C-J>
