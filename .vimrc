@@ -11,9 +11,9 @@ set nocompatible
 " This line should not be removed as it ensures that various options are
 " properly set to work with the Vim-related packages available in Debian.
 
-
-set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
-let g:Powerline_symbols = 'fancy'
+" Powerline Stuff
+" set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
+" let g:Powerline_symbols = 'fancy'
 set encoding=utf-8
 
 runtime! debian.vim
@@ -21,11 +21,21 @@ runtime! debian.vim
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = ''
+let g:ctrlp_max_files=0
 " allow backspacing over everything in insert mode
 let mapleader = "\<Space>"
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>v :Gblame<CR>
 filetype off
+" set rtp+=~/.vim/bundle/vundle/
+" call vundle#rc()
+
+
+"Bundle 'mileszs/ack'
+"Bundle 'kien/ctrlp'
+"Bundle 'sjl/gundo'
+
 execute pathogen#infect()
 
 call pathogen#helptags()
@@ -59,6 +69,10 @@ map <leader>j :RopeGotoDefinition<CR>
 map <leader>r :RopeRename<CR>
 let g:pymode_run = 0
 map <leader>g :GundoToggle<CR>
+let g:pymode_rope_goto_definition_cmd = 'e'
+let g:ropevim_guess_project = 1
+lef g:pymode_rope = 1
+
 nmap <leader>a <Esc>:Ack!
 " Tagbar
 
@@ -231,3 +245,22 @@ augroup EnableSyntaxHighlighting
     autocmd! BufRead * if exists('syntax_on') && exists('b:current_syntax') && ! empty(&l:filetype) && index(split(&eventignore, ','), 'Syntax') != -1 | unlet! b:current_syntax | endif
 augroup END
 
+
+nnoremap <Leader>o :CtrlP<CR>
+
+"let &colorcolumn=join(range(81,999),",")
+
+
+" highlight the 80th column
+"
+" In Vim >= 7.3, also highlight columns 120+
+"if exists('+colorcolumn')
+"  " (I picked 120-320 because you have to provide an upper bound and 500 seems
+"  " to be enough.)
+"  let &colorcolumn="80,".join(range(120,500),",")
+"else
+"  " fallback for Vim < v7.3
+"  autocmd BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+"endif
+"
+highlight Normal ctermfg=lightgrey ctermbg=black

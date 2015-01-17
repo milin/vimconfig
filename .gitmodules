@@ -48,7 +48,7 @@
 	url = git@github.com:fholgado/minibufexpl.vim.git
 [submodule "bundle/ropevim"]
 	path = bundle/ropevim
-	url = git@github.com:klen/rope-vim.git
+	url = https://github.com/python-rope/ropevim.git
 [submodule "bundle/python-mode"]
 	path = bundle/python-mode
 	url = git@github.com:klen/python-mode.git
