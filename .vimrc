@@ -8,6 +8,41 @@
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
+" Required Vundle setup
+filetype off
+set runtimepath+=~/.vim/bundle/vundle
+call vundle#begin()
+
+Plugin 'gmarik/vundle'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'wincent/Command-T'
+Plugin 'tpope/vim-git'
+Plugin 'tpope/vim-fugitive'
+Plugin 'sjl/gundo'
+Plugin 'sjbach/lusty'
+Plugin 'reinh/vim-makegreen'
+Plugin 'techlivezheng/vim-plugin-minibufexpl'
+Plugin 'vim-scripts/The-NERD-tree'
+Plugin 'lambdalisue/nose-machineout'
+Plugin 'vim-scripts/pep8'
+Plugin 'alfredodeza/pytest.vim'
+Plugin 'fs111/pydoc.vim'
+Plugin 'klen/python-mode'
+Plugin 'garbas/vim-snipmate'
+Plugin 'ervandew/supertab'
+Plugin 'tpope/vim-surround'
+Plugin 'majutsushi/tagbar'
+Plugin 'tomtom/tlib_vim'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'fisadev/vim-isort'
+Plugin 'kien/ctrlp'
+Plugin 'mitechie/pyflakes-pathogen'
+
+call vundle#end()            " required
+filetype plugin indent on 
+
 " This line should not be removed as it ensures that various options are
 " properly set to work with the Vim-related packages available in Debian.
 
@@ -28,17 +63,6 @@ let mapleader = "\<Space>"
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>v :Gblame<CR>
 filetype off
-" set rtp+=~/.vim/bundle/vundle/
-" call vundle#rc()
-
-
-"Bundle 'mileszs/ack'
-"Bundle 'kien/ctrlp'
-"Bundle 'sjl/gundo'
-
-execute pathogen#infect()
-
-call pathogen#helptags()
 
 filetype plugin indent on
 syntax on
@@ -54,6 +78,8 @@ let g:pymode = 1
 let g:pymode_doc = 0
 let g:pymode_lint_cwindow = 0
 let g:miniBufExplForceSyntaxEnable = 1
+let g:pymode_rope_organize_imports_bind = '<leader>'
+let g:pymode_rope_autoimport_bind = '<leader>d'
 set hidden
 
 
@@ -70,6 +96,7 @@ map <leader>r :RopeRename<CR>
 let g:pymode_run = 0
 map <leader>g :GundoToggle<CR>
 let g:pymode_rope_goto_definition_cmd = 'e'
+let g:pymode_rope_regenerate_on_write = 0
 let g:ropevim_guess_project = 1
 lef g:pymode_rope = 1
 
@@ -90,6 +117,7 @@ nmap <silent><Leader>tm <Esc>:Pytest method<CR>
 nmap <silent><Leader>tn <Esc>:Pytest next<CR>
 nmap <silent><Leader>tp <Esc>:Pytest previous<CR>
 nmap <silent><Leader>te <Esc>:Pytest error<CR>
+
 " Enable this you want nerdtree for every tab
 " Might replace it with NerdTreeTabs soon
 " autocmd VimEnter * NERDTree
@@ -263,4 +291,4 @@ nnoremap <Leader>o :CtrlP<CR>
 "  autocmd BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 "endif
 "
-highlight Normal ctermfg=lightgrey ctermbg=black
+highlight ColorColumn ctermfg=lightgrey ctermbg=lightgrey
