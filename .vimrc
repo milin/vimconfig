@@ -15,7 +15,6 @@ call vundle#begin()
 
 Plugin 'gmarik/vundle'
 Plugin 'flazz/vim-colorschemes'
-Plugin 'wincent/Command-T'
 Plugin 'tpope/vim-git'
 Plugin 'tpope/vim-fugitive'
 Plugin 'sjl/gundo'
@@ -39,6 +38,7 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'fisadev/vim-isort'
 Plugin 'kien/ctrlp'
 Plugin 'mitechie/pyflakes-pathogen'
+Plugin 'klen/rope-vim'
 
 call vundle#end()            " required
 filetype plugin indent on 
@@ -78,8 +78,9 @@ let g:pymode = 1
 let g:pymode_doc = 0
 let g:pymode_lint_cwindow = 0
 let g:miniBufExplForceSyntaxEnable = 1
-let g:pymode_rope_organize_imports_bind = '<leader>'
-let g:pymode_rope_autoimport_bind = '<leader>d'
+let g:pymode_rope_autoimport = 0
+let g:pymode_rope_autoimport_import_after_complete = 0
+
 set hidden
 
 
@@ -95,8 +96,9 @@ map <leader>j :RopeGotoDefinition<CR>
 map <leader>r :RopeRename<CR>
 let g:pymode_run = 0
 map <leader>g :GundoToggle<CR>
-let g:pymode_rope_goto_definition_cmd = 'e'
+" let g:pymode_rope_goto_definition_cmd = 'e'
 let g:pymode_rope_regenerate_on_write = 0
+let g:pymode_rope_lookup_project = 0
 let g:ropevim_guess_project = 1
 lef g:pymode_rope = 1
 
