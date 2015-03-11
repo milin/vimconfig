@@ -18,7 +18,6 @@ Plugin 'flazz/vim-colorschemes'
 Plugin 'tpope/vim-git'
 Plugin 'tpope/vim-fugitive'
 Plugin 'sjl/gundo.vim'
-Plugin 'sjbach/lusty'
 Plugin 'reinh/vim-makegreen'
 Plugin 'techlivezheng/vim-plugin-minibufexpl'
 Plugin 'vim-scripts/The-NERD-tree'
@@ -35,7 +34,7 @@ Plugin 'tomtom/tlib_vim'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'fisadev/vim-isort'
+"Plugin 'fisadev/vim-isort'
 Plugin 'kien/ctrlp.vim'
 Plugin 'mitechie/pyflakes-pathogen'
 Plugin 'klen/rope-vim'
@@ -85,7 +84,7 @@ set hidden
 
 
 " isort
-let g:vim_isort_map = '<C-i>'
+"let g:vim_isort_map = '<C-i>'
 
 
 " Enable this for just NerdTree
