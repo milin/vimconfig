@@ -12,8 +12,11 @@ set nocompatible
 filetype off
 set runtimepath+=~/.vim/bundle/vundle
 call vundle#begin()
+" Let Vundle use git instead of https
+let g:vundle_default_git_proto = 'git'
 
 Plugin 'gmarik/vundle'
+Plugin 'bling/vim-airline'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'tpope/vim-git'
 Plugin 'tpope/vim-fugitive'
@@ -39,7 +42,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'mitechie/pyflakes-pathogen'
 Plugin 'klen/rope-vim'
 
-call vundle#end()            " required
+call vundle#end() " required
 filetype plugin indent on 
 
 " This line should not be removed as it ensures that various options are
@@ -49,7 +52,7 @@ filetype plugin indent on
 " set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
 " let g:Powerline_symbols = 'fancy'
 set encoding=utf-8
-
+let g:airline_powerline_fonts = 1
 runtime! debian.vim
 " CtrlP
 set runtimepath^=~/.vim/bundle/ctrlp.vim
@@ -65,8 +68,15 @@ filetype off
 
 filetype plugin indent on
 syntax on
-
-colorscheme delek
+" Solarized settings
+set background=dark
+colorscheme solarized
+let g:solarized_termcolors=256
+"let g:Powerline_symbols = 'fancy'
+"set encoding=utf-8
+"set t_Co=256
+"set term=xterm-256color
+"set termencoding=utf-8
 
 set backspace=indent,eol,start
 
@@ -79,6 +89,9 @@ let g:pymode_lint_cwindow = 0
 let g:miniBufExplForceSyntaxEnable = 1
 let g:pymode_rope_autoimport = 0
 let g:pymode_rope_autoimport_import_after_complete = 0
+
+
+
 
 set hidden
 
