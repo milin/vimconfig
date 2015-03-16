@@ -17,5 +17,5 @@ export IBM_DB_HOME=/home/db2inst1/sqllib/lib
 #source /home/db2inst1/sqllib/db2profile
 alias dtplatform='cd /home/vagrant/development/dt/dtplatform'
 alias dtweb='cd /home/vagrant/development/dt/dtweb'
-
+alias personal='cd /home/vagrant/development/personal'
  #Customize to your needs...
