@@ -305,4 +305,4 @@ nnoremap <Leader>o :CtrlP<CR>
 "  autocmd BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 "endif
 "
-highlight ColorColumn ctermfg=lightgrey ctermbg=lightgrey
+highlight ColorColumn ctermfg=black ctermbg=black
