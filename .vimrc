@@ -8,6 +8,7 @@
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
+<<<<<<< HEAD
 " Required Vundle setup
 filetype off
 set runtimepath+=~/.vim/bundle/Vundle
@@ -139,6 +140,26 @@ nmap <silent><Leader>tn <Esc>:Pytest next<CR>
 nmap <silent><Leader>tp <Esc>:Pytest previous<CR>
 nmap <silent><Leader>te <Esc>:Pytest error<CR>
 
+=======
+" This line should not be removed as it ensures that various options are
+" properly set to work with the Vim-related packages available in Debian.
+runtime! debian.vim
+
+" allow backspacing over everything in insert mode
+execute pathogen#infect()
+filetype off
+set backspace=indent,eol,start
+
+let g:pyflakes_use_quickfix = 0
+let g:pep8_map='<leader>8'
+
+" Enable this for just NerdTree
+" NerdTreeTabsToggle kind takes care of this
+" map <leader>n :NERDTreeToggle<CR>
+map <Leader>n <plug>NERDTreeTabsToggle<CR>
+map <leader>j :RopeGotoDefinition<CR>
+map <leader>r :RopeRename<CR>
+>>>>>>> cc09034a0c68fb48cddd38a0331d183d1289b1fb
 " Enable this you want nerdtree for every tab
 " Might replace it with NerdTreeTabs soon
 " autocmd VimEnter * NERDTree
@@ -178,7 +199,10 @@ if has("autocmd")
   " Use the default filetype settings, so that mail gets 'tw' set to 72,
   " 'cindent' is on in C files, etc.
   " Also load indent files, to automatically do language-dependent indenting.
+<<<<<<< HEAD
   filetype on
+=======
+>>>>>>> cc09034a0c68fb48cddd38a0331d183d1289b1fb
   filetype plugin indent on
 
   " Put these in an autocmd group, so that we can delete them easily.
@@ -209,6 +233,7 @@ endif " has("autocmd")
 command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
 	 	\ | wincmd p | diffthis
 
+<<<<<<< HEAD
 
 " if you prefer the Omni-Completion tip window to close when a selection is
 " made, these lines close it on movement in insert mode or when leaving
@@ -217,6 +242,8 @@ autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 
+=======
+>>>>>>> cc09034a0c68fb48cddd38a0331d183d1289b1fb
 " Formatting code
 set ts=4  " Tabs are 2 spaces
 set bs=2  " Backspace over everything in insert mode
@@ -239,12 +266,22 @@ set number
 set nobackup
 
 " Tab Completion
+<<<<<<< HEAD
 "imap <Tab> <C-P>
+=======
+imap <Tab> <C-P>
+>>>>>>> cc09034a0c68fb48cddd38a0331d183d1289b1fb
 
 " Code Folding
 set foldmethod=indent
 set foldlevel=99
 
+<<<<<<< HEAD
+=======
+" Set color theme
+:colorscheme delek
+
+>>>>>>> cc09034a0c68fb48cddd38a0331d183d1289b1fb
 " Add F2 hot key for running Ruby programs
 map <f2> :w\|!clear;ruby %<cr>
 
@@ -256,6 +293,7 @@ map <f4> :w\|!clear;gcc %<cr>
 
 " ADD F6 hot key to save file opened using VIM that required root permissions
 map <f6> :w !sudo tee %
+<<<<<<< HEAD
 map <f7> :%s/\s\+$//
 
 " Navigate through vim buffers
@@ -313,3 +351,8 @@ nnoremap <Leader>o :CtrlP<CR>
 "endif
 "
 highlight ColorColumn ctermfg=black ctermbg=black
+=======
+
+map bg :bn <CR>
+map vf :bp <CR>
+>>>>>>> cc09034a0c68fb48cddd38a0331d183d1289b1fb
