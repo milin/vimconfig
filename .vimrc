@@ -13,14 +13,16 @@ filetype off
 set runtimepath+=~/.vim/bundle/vundle
 call vundle#begin()
 " Let Vundle use git instead of https
-let g:vundle_default_git_proto = 'git'
+"let g:vundle_default_git_proto = 'git'
 
 Plugin 'gmarik/vundle'
 Plugin 'bling/vim-airline'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'tpope/vim-git'
+Plugin 'nvie/vim-flake8'
 Plugin 'tpope/vim-fugitive'
 Plugin 'sjl/gundo.vim'
+Plugin 'szw/vim-ctrlspace' 
 Plugin 'reinh/vim-makegreen'
 Plugin 'techlivezheng/vim-plugin-minibufexpl'
 Plugin 'vim-scripts/The-NERD-tree'
@@ -87,6 +89,8 @@ let g:pymode = 1
 let g:pymode_doc = 0
 let g:pymode_lint_cwindow = 0
 let g:miniBufExplForceSyntaxEnable = 1
+let g:pymode_lint_on_write = 1
+let g:pymode_lint_message = 1
 let g:pymode_rope_autoimport = 0
 let g:pymode_rope_autoimport_import_after_complete = 0
 
@@ -116,17 +120,21 @@ lef g:pymode_rope = 1
 
 nmap <leader>a <Esc>:Ack!
 " Tagbar
-
+setlocal spell
 nnoremap <silent> <TAB> :TagbarToggle<CR>
-nnoremap <silent> <> :TagbarToggle<CR>
+"nnoremap <silent> <> :TagbarToggle<CR>
 
 let g:tagbar_autoclose = 1
 let g:tagbar_autofocus = 1
 
 " Pytest
-nmap <silent><Leader>tf <Esc>:Pytest file<CR>
-nmap <silent><Leader>tc <Esc>:Pytest class<CR>
-nmap <silent><Leader>tm <Esc>:Pytest method<CR>
+nmap <silent><Leader>tf <Esc>:Pytest file  <CR>
+nmap <silent><Leader>tc <Esc>:Pytest class  <CR>
+nmap <silent><Leader>tm <Esc>:Pytest method  <CR>
+" Pytest with pdb
+nmap <silent><Leader>tff <Esc>:Pytest file --pdb <CR>
+nmap <silent><Leader>tcc <Esc>:Pytest class --pdb <CR>
+nmap <silent><Leader>tmm <Esc>:Pytest method --pdb <CR>
 " cycle through test errors
 nmap <silent><Leader>tn <Esc>:Pytest next<CR>
 nmap <silent><Leader>tp <Esc>:Pytest previous<CR>
