@@ -10,7 +10,7 @@ set nocompatible
 
 " Required Vundle setup
 filetype off
-set runtimepath+=~/.vim/bundle/vundle
+set runtimepath+=~/.vim/bundle/Vundle
 call vundle#begin()
 " Let Vundle use git instead of https
 "let g:vundle_default_git_proto = 'git'
@@ -32,7 +32,6 @@ Plugin 'alfredodeza/pytest.vim'
 Plugin 'fs111/pydoc.vim'
 Plugin 'klen/python-mode'
 Plugin 'garbas/vim-snipmate'
-Plugin 'ervandew/supertab'
 Plugin 'tpope/vim-surround'
 Plugin 'majutsushi/tagbar'
 Plugin 'tomtom/tlib_vim'
@@ -240,7 +239,7 @@ set number
 set nobackup
 
 " Tab Completion
-imap <Tab> <C-P>
+"imap <Tab> <C-P>
 
 " Code Folding
 set foldmethod=indent
