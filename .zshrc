@@ -26,12 +26,7 @@ alias dtmaster='cd /home/vagrant/development/dtmaster'
 # Personal Projects
 alias faceguard='cd /home/vagrant/development/personal/faceguard'
 
-# ssh aliases
-alias sshdevint1='sshpass -p "changeme" ssh qauser@10.136.0.11'
-alias sshdevint2='sshpass -p "changeme" ssh qauser@10.136.0.12'
-alias sshdjbs1='sshpass -p DTpass11 ssh root@10.134.25.99'
-alias sshdjbs1='sshpass -p DTpass11 ssh root@10.134.25.99'
-alias sshdjbs3='sshpass -p DTpass11 ssh root@10.134.25.58'
+
 #Customize to your needs...
 #
 stty -ixon
